@@ -7,7 +7,7 @@ options(repr.plot.width = 4, repr.plot.height = 3) #set plot size output
 tax_files<-list.files(pattern=".txt") # This line finds all file ending with .txt
 #
 for (i in tax_files){
-    tax_import<-read.table(i, header=FALSE, sep="\t", fill=TRUE) # reads in each file
+    tax_import<-read.delim(i, header=FALSE, sep="\t", fill=TRUE, na.strings=".", stringsAsFactors=FALSE) # reads in each file # test this out with your specific input files, as it may require different parameters.
     names<-unlist(strsplit(i,"_")) # parses file name
     tax_import$Sample<-names[1] # replace column 1 header with first part of file name
     tax_import$SILVA<-names[2]
